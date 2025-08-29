@@ -1,0 +1,13 @@
+FROM node:10
+
+WORKDIR /usr/src/app
+COPY app/package*.json ./
+RUN npm install
+
+ENV SLACK_SIGNING_SECRET 4ef5d54c84ed7aefa6dd9b9b320b12d5
+ENV SLACK_BOT_TOKEN xoxb-690250038132-1147579612421-QM6WITV4HruDoGrI33JUVTwg
+
+COPY app/ ./
+
+EXPOSE 3000
+CMD [ "node", "app.js" ]
